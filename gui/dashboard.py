@@ -98,6 +98,29 @@ class Dashboard:
             relief="flat", padx=10, pady=5, cursor="hand2"
         ).pack(side="left", padx=5)
 
+        # ── Days Back Selector ────────────────────────────────
+        tk.Label(
+            control_frame, text="Scan last:",
+            bg=BG, fg=TEXT,
+            font=("Consolas", 10)
+        ).pack(side="left", padx=(20, 2))
+
+        self.days_var = tk.StringVar(value="7")
+        days_menu = ttk.Combobox(
+            control_frame,
+            textvariable=self.days_var,
+            values=["1", "3", "7", "14", "30"],
+            width=5,
+            state="readonly"
+        )
+        days_menu.pack(side="left", padx=5)
+
+        tk.Label(
+            control_frame, text="days",
+            bg=BG, fg=TEXT,
+            font=("Consolas", 10)
+        ).pack(side="left")
+
         # ── Search Bar ────────────────────────────────────
         tk.Label(
             control_frame, text="🔍",
@@ -219,8 +242,9 @@ class Dashboard:
 
     # ── Methods ───────────────────────────────────────────
     def scan_device(self):
+        days_back = int(self.days_var.get())
         self.status_var.set(
-            "[*] Scanning device... Please wait."
+            f"[*] Scanning last {days_back} days... Please wait."
         )
         self.root.update()
 
@@ -228,7 +252,7 @@ class Dashboard:
         all_logs  = []
 
         for log_name in log_names:
-            raw  = fetch_logs(log_name, 100)
+            raw  = fetch_logs(log_name, 500, days_back)
             logs = parse_logs(raw)
             all_logs.extend(logs)
 
@@ -237,7 +261,8 @@ class Dashboard:
         self.refresh_table(self.all_threats)
         self.status_var.set(
             f"[+] Scan complete! "
-            f"{len(threats)} threats detected on SANSKRUTI."
+            f"{len(threats)} threats found "
+            f"in last {days_back} days on {DEVICE_NAME}."
         )
 
     def refresh_table(self, threats):
