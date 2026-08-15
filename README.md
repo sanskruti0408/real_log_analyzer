@@ -30,12 +30,12 @@ professional dark-themed GUI dashboard.
 
 - The tool now supports custom historical log scanning, allowing you to analyse Windows Event Logs from a user-selected number of previous days.
 - What it does:
--- 📅 Select how many past days you want to investigate.
--- 🔎 Analyse historical System, Security & Application logs.
--- 🛡️ Apply the same threat-detection rules to older events.
--- 📊 Display detected threats directly on the SOC Dashboard.
--- 📄 Generate corresponding TXT & CSV security reports.
--- ⚡ Helps identify suspicious activity that may have occurred days before the investigation
+- 📅 Select how many past days you want to investigate.
+- 🔎 Analyse historical System, Security & Application logs.
+- 🛡️ Apply the same threat-detection rules to older events.
+- 📊 Display detected threats directly on the SOC Dashboard.
+- 📄 Generate corresponding TXT & CSV security reports.
+- ⚡ Helps identify suspicious activity that may have occurred days before the investigation
 ---
 
 ## 🗂️ Project Structure
