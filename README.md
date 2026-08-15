@@ -25,7 +25,7 @@ professional dark-themed GUI dashboard.
 - ✅ Dark-themed SOC Dashboard
 ---
 
-## 🕒 Historical Log Analysis — Scan the Past
+## 🕒 **Historical Log Analysis — Scan the Past**
 
 - Don't limit your investigation to what happened today. Go back in time. 🔍
 
