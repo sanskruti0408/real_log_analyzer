@@ -26,10 +26,11 @@ professional dark-themed GUI dashboard.
 ---
 
 - 🔹 Historical Log Scanning
-Allows users to select the number of past days to scan.
-Supports scanning logs from a selected time range instead of only recent/current events.
-Helps analyse historical security activity and identify threats that occurred earlier.
-Displays the results through the SOC dashboard and generates corresponding TXT and CSV reports.
+- 
+- Allows users to select the number of past days to scan.
+- Supports scanning logs from a selected time range instead of only recent/current events.
+- Helps analyse historical security activity and identify threats that occurred earlier.
+- Displays the results through the SOC dashboard and generates corresponding TXT and CSV reports.
 
 ---
 
