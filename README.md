@@ -26,7 +26,8 @@ professional dark-themed GUI dashboard.
 ---
 
 🕒 Historical Log Analysis — Scan the Past
--Don't limit your investigation to what happened today. Go back in time. 🔍
+
+- Don't limit your investigation to what happened today. Go back in time. 🔍
 
 - The tool now supports custom historical log scanning, allowing you to analyse Windows Event Logs from a user-selected number of previous days.
 - What it does:
