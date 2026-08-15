@@ -11,9 +11,11 @@ log_names = [
 ]
 
 all_logs = []
+SCAN_COUNT = 5000
+SCAN_DAYS = 30
 
 for log_name in log_names:
-    raw = fetch_logs(log_name, 50)
+    raw = fetch_logs(log_name, count = SCAN_COUNT, days = SCAN_DAYS)
     logs = parse_logs(raw)
     all_logs.extend(logs)
 
