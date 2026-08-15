@@ -241,18 +241,16 @@ class Dashboard:
         ).pack(fill="x", side="bottom")
 
     # ── Methods ───────────────────────────────────────────
-    def scan_device(self):
-        days_back = int(self.days_var.get())
-        self.status_var.set(
-            f"[*] Scanning last {days_back} days... Please wait."
-        )
+    def scan_device(self, days=30):
+        from core.parser import fetch_logs, parse_logs
+        from core.detector import run_all_detections
+
+        self.status_var.set("[*] Scanning real device logs...")
         self.root.update()
 
-        log_names = ["System", "Security", "Application"]
-        all_logs  = []
-
-        for log_name in log_names:
-            raw  = fetch_logs(log_name, 500, days_back)
+        all_logs = []
+        for log_name in ["System", "Security", "Application"]:
+            raw  = fetch_logs(log_name, count=5000, days=days)
             logs = parse_logs(raw)
             all_logs.extend(logs)
 
@@ -260,11 +258,9 @@ class Dashboard:
         self.all_threats.extend(threats)
         self.refresh_table(self.all_threats)
         self.status_var.set(
-            f"[+] Scan complete! "
-            f"{len(threats)} threats found "
-            f"in last {days_back} days on {DEVICE_NAME}."
+            f"[+] Scan complete! {len(threats)} threats found."
         )
-
+        
     def refresh_table(self, threats):
         for row in self.tree.get_children():
             self.tree.delete(row)
