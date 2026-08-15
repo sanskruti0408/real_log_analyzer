@@ -2,27 +2,22 @@ import subprocess
 import re
 from datetime import datetime
 
-def fetch_logs(log_name, count=500, days_back=7):
-    from datetime import datetime, timedelta
-    try:
-        start_date = datetime.now() - timedelta(days=days_back)
-        start_str  = start_date.strftime("%Y-%m-%dT%H:%M:%S")
-        
-        cmd = (
-            f'wevtutil qe {log_name} /c:{count} '
-            f'/f:text /rd:true '
-            f'/q:"*[System[TimeCreated[@SystemTime>=\'{start_str}\']]]"'
-        )
-        result = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            shell=True
-        )
-        return result.stdout or ""
-    except Exception as e:
-        print(f"[!] Error fetching {log_name}: {e}")
-        return ""
+def fetch_logs(log_name, count=5000, days=30):
+    query = (
+        f"*[System[TimeCreated"
+        f"[timediff(@SystemTime) <= {days * 86400000}]]]"
+    )
+    cmd = (
+        f'wevtutil qe {log_name} /c:{count} '
+        f'/f:text /rd:true /q:"{query}"'
+    )
+    result = subprocess.run(
+        cmd,
+        capture_output=True,
+        text=True,
+        shell=True
+    )
+    return result.stdout 
 
 
 def parse_logs(raw_text):
