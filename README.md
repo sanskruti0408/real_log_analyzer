@@ -25,13 +25,17 @@ professional dark-themed GUI dashboard.
 - ✅ Dark-themed SOC Dashboard
 ---
 
-- 🔹 Historical Log Scanning
-- 
-- Allows users to select the number of past days to scan.
-- Supports scanning logs from a selected time range instead of only recent/current events.
-- Helps analyse historical security activity and identify threats that occurred earlier.
-- Displays the results through the SOC dashboard and generates corresponding TXT and CSV reports.
+🕒 Historical Log Analysis — Scan the Past
+-Don't limit your investigation to what happened today. Go back in time. 🔍
 
+- The tool now supports custom historical log scanning, allowing you to analyse Windows Event Logs from a user-selected number of previous days.
+- What it does:
+-- 📅 Select how many past days you want to investigate.
+-- 🔎 Analyse historical System, Security & Application logs.
+-- 🛡️ Apply the same threat-detection rules to older events.
+-- 📊 Display detected threats directly on the SOC Dashboard.
+-- 📄 Generate corresponding TXT & CSV security reports.
+-- ⚡ Helps identify suspicious activity that may have occurred days before the investigation
 ---
 
 ## 🗂️ Project Structure
